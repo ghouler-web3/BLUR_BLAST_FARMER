@@ -4,8 +4,6 @@
 
 ![image0](https://github.com/ghouler-web3/BLUR_BLAST_FARMER/assets/170937517/afd1f366-73a2-4842-9f18-3fe87e8bc696)
 
-
-Bot used to create trading volume on the [Backpack exchange](https://backpack.exchange/refer/binance)
 ## Установка и запуск 💻
    1. Все библиотеки, нужные для работы, можно установить, запустив файл`INSTALL.bat`.
    2. Начать работу бота можно, запустив файл `START.bat`
