@@ -1,6 +1,6 @@
 # Blast Blur Farmer 🟠
 
-[![channel](https://img.shields.io/badge/ghoulerwe3b_|_Подпишись-0A66C2?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/web3_enjoyer_club) 
+[![channel](https://img.shields.io/badge/ghoulerwe3b_|_Подпишись-0A66C2?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ghouler_web3) 
 
 ![image0](https://github.com/ghouler-web3/BLUR_BLAST_FARMER/assets/170937517/afd1f366-73a2-4842-9f18-3fe87e8bc696)
 
