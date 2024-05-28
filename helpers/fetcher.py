@@ -77,7 +77,7 @@ class AsyncFetcher():
         if not session_closed:
              session.close()
 
-    async def fetch_url(self, session=None, url=None, method="GET", payload=None, headers=None, params=None, data=None, cookies=None, proxies=None, timeout=60, retries=15):
+    async def fetch_url(self, session=None, url=None, method="GET", payload=None, headers=None, params=None, data=None, cookies=None, proxies=None, timeout=30, retries=3):
 
         if session is None:
             session = requests.AsyncSession()
