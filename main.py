@@ -16,7 +16,7 @@ async def read_excel(file_path):
 
 async def process_data_frame(df, logger):
 
-    semaphore = asyncio.Semaphore(len(df.keys))
+    semaphore = asyncio.Semaphore(len(df))
 
     async def process_row(row, original_index):
         async with semaphore:
