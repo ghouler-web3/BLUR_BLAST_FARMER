@@ -1,4 +1,6 @@
 
+PARSER_PROXY = ''  # HTTPS/S ПРОКСИ ДЛЯ ПАРСЕРА (ФОРМАТ ЛЮБОЙ) - ЕСЛИ У ВАС ЗАБЛОКИРОВАН BLUR
+
 BLAST_RPC = 'https://rpc.blast.io'  # RPC ДЛЯ СЕТИ БЛАСТА
 
 USE_TG_BOT = True  # ИСПОЛЬЗОВАТЬ ЛИ ТГ БОТА
