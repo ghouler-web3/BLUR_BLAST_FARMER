@@ -525,8 +525,24 @@ class Blur(AsyncFetcher):
             self.pool_status = False
             return
 
-    async def refill_after_sale(self, value):
-        pass
+    async def refill_after_sale(self):
+        if not self.pool_status:
+            self.pool_status = True
+            try:
+                if self.balance > 0.02:
+                    #self.logger.log(f"Не хватает баланса ETH, вывожу...", self.ad.account.address)
+                    bal_to_dep = round(self.balance - 0.01, 6)
+                    dep_blur = await self.onchain.pool(self.ad.w3, self.ad.account, bal_to_dep, direction='in')
+                    if not dep_blur or (type(dep_blur) == str and dep_blur == 'low_native'):
+                        raise Exception
+                    else:
+                        return True
+                else:
+                    raise Exception
+            except Exception as e:
+                print(f"EXP: {e}")
+                self.pool_status = False
+                return
 
     async def get_safe_position(self, bids_blur, min_bidders, min_bids, size, change_pos, first_pos, ex_bids=0):
         min_bids = int(size * min_bids / 100) + ex_bids
@@ -862,10 +878,9 @@ class Blur(AsyncFetcher):
                 print(f"LISTER EXP: {e}")
                 await asyncio.sleep(random.uniform(25, 35))
                 continue
-        # try:
-        #     await lister_db.delete(task_id)
-        # except:
-        #     pass
+
+        await self.refill_after_sale()
+        
         return
 
     async def check_and_make_bids(self):
