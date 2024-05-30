@@ -4,18 +4,19 @@ import aiofiles
 import pandas as pd
 from io import BytesIO
 
-from helpers.account import AccountData
+from helpers.account import AccountData, Proxy
 from helpers.logger import Logger
 from helpers.utils import get_proxy_web3, get_normal_web3
 
-from config import USE_TG_BOT, TOKEN, ADMIN_ID, BLAST_RPC
+from config import USE_TG_BOT, TOKEN, ADMIN_ID, BLAST_RPC, PARSER_PROXY
 
 async def read_excel(file_path):
     async with aiofiles.open(file_path, 'rb') as f:
         return await f.read()
 
 async def process_data_frame(df, logger):
-    semaphore = asyncio.Semaphore(len(df))
+
+    semaphore = asyncio.Semaphore(len(df.keys))
 
     async def process_row(row, original_index):
         async with semaphore:
@@ -59,7 +60,13 @@ async def start_bot():
 
 async def start_parser():
     from core.parser import Parser
-    parser = Parser()
+
+    try:
+        proxy = Proxy.from_str(PARSER_PROXY)
+    except:
+        proxy = None
+
+    parser = Parser(proxy=proxy)
     await parser.main()
 
 async def main():
